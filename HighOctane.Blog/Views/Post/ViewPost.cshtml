@@ -1,0 +1,32 @@
+﻿@model Post
+
+
+<div class="container">
+    <div class="card bg-danger mb-3 border-white">
+        <div class="card-header text-center bg-danger mb-3">
+            <h2>@Model.Title</h2>
+            <br />
+            <div class="container text-right bg-danger mb-3 border-white">
+                <p>Author -->  @Model.Author | Date -->  @Model.CreatedDate</p>
+            </div>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <div class="container text-left bg-danger mb-3">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <a class="nav-link text-light" asp-action="CreateOrEditPost" asp-controller="Post" asp-route-id="@Model.Id">Edit</a>
+                        </div>
+                        <div class="col-xs-6">
+                            <a class="nav-link text-white" asp-action="DeletePost" asp-controller="Post" asp-route-id="@Model.Id">Delete</a>
+                        </div>
+                    </div>
+                </div>
+
+            }
+        </div>
+        <br />
+        <div class="card-body bg-danger mb-3 text-center">
+            <p>@Model.Content</p>
+        </div>
+    </div>
+</div>

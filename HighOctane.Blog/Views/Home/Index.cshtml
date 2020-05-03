@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Post>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center text-light">
+    <h1 class="display-4">Welcome</h1>
+    <p>A very unusual blog.</p>
+</div>
+
+<div class="container">
+    @foreach (Post post in Model) 
+    {
+        <div class="row">
+            <div class="col-xs-12">
+                <a class="lead nav-link text-light" asp-action="ViewPost" asp-controller="Post" asp-route-id="@post.Id">@post.Title</a>
+            </div>
+                <br/>
+            </div>
+            <div class="row">
+                <div class="container text-left col-xs-12">
+                    <p class="text-light">@post.CreatedDate</p>
+                </div>
+        </div>
+        <hr class="border-light"/>
+    }
+</div>

@@ -1,0 +1,45 @@
+﻿@model LoginViewModel 
+
+
+
+@{
+    ViewData["Title"] = "Sign In Page";
+}
+
+    <div class="text-center bg-danger text-white">
+
+        <div class="container bg-danger">
+            <div class="card mb-3 w-50">
+
+                <div class="card-header bg-danger">
+                    <h1>Welcome.</h1>
+                    <h3>Please Sign In.</h3>
+                </div>
+                <div class="card-body bg-danger">
+                    <form asp-action="Login" asp-controller="Auth" method="post" class="form-group">
+
+                        <div class="col-xs-4">
+                            <label class="text-white"> User Name </label>
+                            <input type="text" asp-for="UserName" class="form-control mb-3" />
+                        </div>
+
+                        <br />
+
+                        <div class="col-xs-4">
+                            <label class="text-white"> Password </label>
+                            <input type="password" asp-for="Password" class="form-control mb-3" />
+                        </div>
+                        <hr />
+
+                        <input class="btn btn-outline-danger border-white btn-lg" type="submit" value="Sign In" />
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <span asp-validation-for="UserName" class="text-white"></span>
+        <br/>
+        <span asp-validation-for="Password" class="text-white"></span>
+
+    </div>
