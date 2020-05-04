@@ -6,12 +6,15 @@ RUN dotnet restore
 
 COPY . ./
 
-RUN dotnet publish -c Release -o out
+
+FROM build-env AS publish
+WORKDIR /app/HighOctane.Blog
+RUN dotnet publish -c Release -o /app/HighOctane.Blog
 
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
-WORKDIR /app
+WORKDIR /app/out
 EXPOSE 80
-COPY --from=build-env /app/out
+COPY --from=build-env /app/HighOctane.Blog .
 ##ENTRYPOINT ["dotnet","HighOctane.Blog.dll"]
 
 CMD ASPNETCORE_URLS=http://*:$PORT dotnet HighOctane.Blog.dll
