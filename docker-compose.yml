@@ -1,10 +1,10 @@
 version: "3"
 services:
     HighOctane.Blog:
-        build: .
+        build:
+          context: .
+          dockerfile: Dockerfile
         container_name: highoctane_blog
-        context: .
-        dockerfile: Dockerfile
         volumes:
             - ./src:/app
             - /app/obj/
