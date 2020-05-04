@@ -14,4 +14,4 @@ EXPOSE 80
 COPY --from=build-env /app/out
 ##ENTRYPOINT ["dotnet","HighOctane.Blog.dll"]
 
-CMD ASPNETCORE_URLS=https://*:$PORT dotnet HighOctane.Blog.dll
+CMD ASPNETCORE_URLS=http://*:$PORT dotnet HighOctane.Blog.dll
