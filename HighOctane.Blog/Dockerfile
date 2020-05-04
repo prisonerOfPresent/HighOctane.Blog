@@ -12,7 +12,7 @@ WORKDIR /app/HighOctane.Blog
 RUN dotnet publish -c Release -o /app/HighOctane.Blog
 
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
-WORKDIR /app/out
+WORKDIR /app
 EXPOSE 80
 COPY --from=build-env /app/HighOctane.Blog .
 ##ENTRYPOINT ["dotnet","HighOctane.Blog.dll"]
