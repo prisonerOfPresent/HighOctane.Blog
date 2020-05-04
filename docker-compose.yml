@@ -1,6 +1,6 @@
 version: "3"
 services:
-    web:
+    HighOctane.Blog:
         build: .
         container_name: highoctane_blog
         context: .
