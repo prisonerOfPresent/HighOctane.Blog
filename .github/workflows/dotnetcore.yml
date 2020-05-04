@@ -22,7 +22,7 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release
     - name: Build the docker-compose stack
-      run: docker-compose -f docker-compose.yml
+      run: docker-compose
     - name : Deploy to Heroku
       env: 
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
