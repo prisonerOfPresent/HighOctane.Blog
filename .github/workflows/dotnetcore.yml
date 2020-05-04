@@ -21,6 +21,8 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --configuration Release
+    - name: Run compose
+      run: docker-compose up -d --build 
     - name : Deploy to Heroku
       env: 
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
