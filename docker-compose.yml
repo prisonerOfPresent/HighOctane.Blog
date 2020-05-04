@@ -3,6 +3,8 @@ services:
     web:
         build: .
         container_name: highoctane_blog
+        context: .
+        dockerfile: Dockerfile
         volumes:
             - ./src:/app
             - /app/obj/
