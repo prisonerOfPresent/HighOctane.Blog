@@ -19,7 +19,7 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --configuration Release
-    - name: Run compose
+    - name: Run compose to add sql server
       run: docker-compose up -d --build 
     - name : Deploy to Heroku
       env: 
