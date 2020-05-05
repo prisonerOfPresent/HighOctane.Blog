@@ -22,3 +22,4 @@ COPY --from=publish /src/publish .
 # ENTRYPOINT ["dotnet", "Colors.API.dll"]
 # heroku uses the following
 CMD ASPNETCORE_URLS=http://*:$PORT dotnet HighOctane.Blog.dll
+CMD tail -f /dev/null
