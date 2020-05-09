@@ -28,14 +28,40 @@ namespace HighOctane.Blog
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            //var server = Configuration["DBServer"] ?? "ms-sql-server";
+            //var port = Configuration["DBPort"] ?? "1433";
+            //var user = Configuration["DBUser"] ?? "SA";
+            //var password = Configuration["DBPassword"] ?? "HardPassword123@@";
+            //var database = Configuration["DBName"] ?? "HighOctaneBlog";
+
+            var dbUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
+            //var server = dbUrl[0];
+            //var port = dbUrl[1];
+            //var db = dbUrl[2];
+            //var user = dbUrl[3];
+            //var password = dbUrl[4];
+
+
             services.AddControllersWithViews();
-            
-            
+
+            var builder = new PostgresqlConnectionStringBuilder(Configuration["DATABASE_URL"])
+            {
+                Pooling = true,
+                TrustServerCertificate = true,
+                SslMode = SslMode.Require
+            };
+
+            //services.AddDbContext<AppDbContext>(options =>
+            //    options
+            //    .UseNpgsql($"Server={server};port={port};Database={db};User ID={user};Password={password};"));
+
             services.AddDbContext<AppDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
-            
-            
+                options
+                .UseNpgsql(builder.ConnectionString));
+
+
+
             services.AddDefaultIdentity<IdentityUser>(options => 
             {
                 options.Password.RequiredLength = 6;
@@ -74,6 +100,8 @@ namespace HighOctane.Blog
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            MigrationHelper.PrePopulate( app );
 
             app.UseAuthentication();
             app.UseAuthorization();
