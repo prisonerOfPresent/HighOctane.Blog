@@ -11,19 +11,19 @@
 
 <div class="container">
 
-    <div class="card bg-danger text-center w-75 border-light">
-        <div class="card-header bg-danger mb-3">
+    <div class="card text-center w-75">
+        <div class="card-header mb-3">
             <h2 class="lead">
                 @title
             </h2>
         </div>
-        <div class="card-body bg-danger">
+        <div class="card-body ">
             <form asp-action="CreateOrEditPost" asp-controller="Post" method="post" class="form-group">
                 <div class="form-row">
                     <div class="col-md-12">
                         <div class="container w-50">
 
-                            <label class="text-white"> Title </label>
+                            <label class="label"> Title </label>
                             <input class="form-control" type="text" asp-for="Title" />
                         </div>
                     </div>
@@ -32,7 +32,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="container w-75">
-                            <label class="text-white"> Content </label>
+                            <label class="label"> Content </label>
                             <textarea class="form-control" asp-for="Content"></textarea>
                         </div>
                     </div>
@@ -41,7 +41,7 @@
                 <div class="form-row">
                     <div class="col">
                         <div class="container w-25">
-                            <input class="form-control btn btn-outline-danger border-white" type="submit" value="Save" />
+                            <input class="form-control btn" type="submit" value="Save" />
                         </div>
                     </div>
                 </div>
@@ -51,13 +51,13 @@
 </div>
 @if (!string.IsNullOrEmpty((string)ViewData["PostResult"]))
 {
-    <div class="container bg-danger text-white">
+    <div class="container">
         @ViewData["PostResult"]
     </div>
 }
 
 <div class="container text-center">
-    <span asp-validation-for="Title" class="text-white"></span>
+    <span asp-validation-for="Title" class="label"></span>
     <br />
-    <span asp-validation-for="Content" class="text-white"></span>
+    <span asp-validation-for="Content" class="label"></span>
 </div>

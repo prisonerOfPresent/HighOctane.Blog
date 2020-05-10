@@ -1,0 +1,227 @@
+﻿@import "../lib/bootstrap/scss/bootstrap.scss";
+
+
+:root {
+    --primary-color: #302AE6;
+    --secondary-color: #536390;
+    --font-color: #fff;
+    --font-color-hover:#818cab;
+    --bg-color: #B62F34;
+    --heading-color: #fff;
+}
+
+[data-theme="dark"] {
+    --primary-color: #9A97F3;
+    --secondary-color: #818cab;
+    --font-color: #e1e1ff;
+    --font-color-hover: #818cab;
+    --bg-color: #161625;
+    --heading-color: #818cab;
+}
+
+
+[data-theme="light"] {
+    --primary-color: #000;
+    --secondary-color: #818cab;
+    --font-color: #000;
+    --font-color-hover: #818cab;
+    --bg-color: #e1e1ff;
+    --heading-color: #1b6ec2;
+}
+
+
+
+a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+}
+
+
+.card {
+    margin: 0 auto; /* Added */
+    float: none; /* Added */
+    margin-bottom: 10px; /* Added */
+    background-color: var(--bg-color);
+    color: var(--font-color);
+    border-color:var(--font-color);
+}
+
+.dropdown {
+    margin: 0 auto; /* Added */
+    float: none; /* Added */
+    margin-bottom: 10px; /* Added */
+    background-color: var(--bg-color);
+    color: var(--font-color);
+    border-color: var(--font-color);
+}
+
+.dropdown-menu {
+    background-color: var(--bg-color);
+    color: var(--font-color);
+    border-color: var(--font-color);
+}
+
+.dropdown-item {
+    background-color: var(--bg-color);
+    color: var(--font-color);
+    border-color: var(--font-color);
+}
+
+.dropdown-toggle {
+    background-color: var(--bg-color);
+    color: var(--font-color);
+    border-color: var(--font-color);
+}
+
+.label {
+    color: var(--font-color);
+    background-color: var(--bg-color);
+    border-color: var(--bg-color)
+}
+
+.form-control {
+    color: var(--font-color);
+    background-color: var(--bg-color);
+    border-color: var(--font-color);
+}
+
+/*.btn {
+    color: var(--font-color);
+    background-color: var(--bg-color);
+    border-color: var(--bg-color);
+}*/
+
+.btn {
+    color: transparent;
+    background-color: transparent;
+    border-color: var(--font-color);
+    &:hover, &:focus, &:active:focus, &.focus, &.active {
+        box-shadow:none;
+        background-color:var(--bg-color);
+        color:var(--font-color);
+        border-color:var(--font-color);
+    }
+}
+
+
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.border-top {
+    border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
+}
+
+body {
+    font-family: Consolas, 'Segoe UI';
+    background-color: var(--bg-color);
+    color: var(--font-color);
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    font-size: calc(1rem + 0.25vh);
+}
+
+h1 {
+    color: var(--heading-color);
+    font-size: 2rem;
+    margin-bottom: 1vh;
+}
+
+p {
+    font-size: 1.1rem;
+    line-height: 1.6rem;
+}
+
+a {
+    color: var(--font-color);
+    text-decoration: none;
+
+    &:hover, &:focus ,&:active{
+        background-color: var(--bg-color);
+        color: var(--font-color-hover);
+        border-color: var(--font-color);
+    }
+}
+
+section {
+    max-width: 68%;
+    margin: 0 auto;
+}
+
+.post-meta {
+    font-size: 1rem;
+    font-style: italic;
+    display: block;
+    margin-bottom: 4vh;
+    color: var(--secondary-color);
+}
+
+nav {
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px 0;
+}
+
+.nav-link {
+    color: var(--font-color);
+    text-decoration: none;
+
+    &:hover, &:focus, &:active {
+        background-color: var(--bg-color);
+        color: var(--font-color-hover);
+        border-color: var(--font-color);
+    }
+}
+
+.nav-item {
+    color: var(--font-color);
+    text-decoration: none;
+    &:hover, &:focus {
+        background-color: var(--bg-color);
+        color: var(--font-color-hover);
+        border-color: var(--font-color);
+    }
+}
+
+

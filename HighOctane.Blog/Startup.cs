@@ -29,19 +29,12 @@ namespace HighOctane.Blog
         public void ConfigureServices(IServiceCollection services)
         {
 
-            //var server = Configuration["DBServer"] ?? "ms-sql-server";
-            //var port = Configuration["DBPort"] ?? "1433";
-            //var user = Configuration["DBUser"] ?? "SA";
-            //var password = Configuration["DBPassword"] ?? "HardPassword123@@";
-            //var database = Configuration["DBName"] ?? "HighOctaneBlog";
-
-            var dbUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
-            //var server = dbUrl[0];
-            //var port = dbUrl[1];
-            //var db = dbUrl[2];
-            //var user = dbUrl[3];
-            //var password = dbUrl[4];
-
+            //var dbUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
+            ////var server = dbUrl[0];
+            ////var port = dbUrl[1];
+            ////var db = dbUrl[2];
+            ////var user = dbUrl[3];
+            ////var password = dbUrl[4];
 
             services.AddControllersWithViews();
 
@@ -51,10 +44,6 @@ namespace HighOctane.Blog
                 TrustServerCertificate = true,
                 SslMode = SslMode.Require
             };
-
-            //services.AddDbContext<AppDbContext>(options =>
-            //    options
-            //    .UseNpgsql($"Server={server};port={port};Database={db};User ID={user};Password={password};"));
 
             services.AddDbContext<AppDbContext>(options =>
                 options
