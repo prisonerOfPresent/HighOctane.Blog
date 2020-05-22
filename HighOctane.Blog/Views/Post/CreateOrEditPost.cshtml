@@ -8,10 +8,34 @@
 
 
     List<Category> categories = (List<Category>)ViewBag.Categories;
+    List<string> tagsList = null;
+    if ( ViewBag.Tags != null )
+        tagsList = (List<string>)ViewBag.Tags;
+}
+
+@section Scripts
+{ 
+            @if ( tagsList != null && tagsList.Count > 0 )
+            {
+                foreach (string tag in tagsList) {
+                   <script type="text/javascript"> 
+                       var tagStr = new String('@tag');
+                       console.log("The tag is : " + tagStr);
+                       tags = [];
+                       splitTags = tagStr.split(",");
+                       tags.push(splitTags); 
+                   </script>
+                }
+            }
+
+<script> $( document).ready(function () {
+     addTags();
+    } ); </script>
+
 }
 
 
-<div class="container">
+<div class="container" onkeydown="EnterKeyFilter();" >
 
     <div class="card text-center w-75">
         <div class="card-header mb-3">

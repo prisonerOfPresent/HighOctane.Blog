@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="~/css/site.min.css" />
     <link rel="icon" type="image/x-icon" href="~/assets/favicon.ico">
 </head>
-<body class="w-auto" onkeydown="EnterKeyFilter();" >
+<body class="w-auto">
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3">
             <div class="container">
@@ -69,7 +69,7 @@
     </header>
 
 
-    <div class="container">
+    <div class="container overflow-auto">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>

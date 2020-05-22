@@ -44,7 +44,9 @@ namespace HighOctane.Blog.Controllers
             else 
             {
                 var post = repo.GetById((int)id);
-                return View( post );
+                PostViewModel postViewModel = postHelper.GetViewModelFromPost( post );
+                ViewBag.Tags = postViewModel.Tags;
+                return View( postViewModel );
             }
         }
 
@@ -58,7 +60,7 @@ namespace HighOctane.Blog.Controllers
                     post.Author = User.Identity.Name;
                     post.CreatedDate = DateTime.Now;
 
-                    Post actualPost = await postHelper.getPostFromViewModel(post);
+                    Post actualPost = await postHelper.GetPostFromViewModel(post);
 
                     repo.Add(actualPost);
                 }
@@ -68,7 +70,7 @@ namespace HighOctane.Blog.Controllers
                         post.CreatedDate = DateTime.Now;
                     post.UpdateTime = DateTime.Now;
                     post.Author = User.Identity.Name;
-                    Post actualPost = await postHelper.getPostFromViewModel(post);
+                    Post actualPost = await postHelper.GetPostFromViewModel(post);
                     repo.Update(actualPost);
                 }
                 bool changesSaved = await repo.SaveChangesAsync();

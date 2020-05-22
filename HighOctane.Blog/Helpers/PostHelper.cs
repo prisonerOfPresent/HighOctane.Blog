@@ -22,7 +22,7 @@ namespace HighOctane.Blog.Helpers
             TagRepositiry = tagRepositiry;
         }
 
-        public async Task<Post> getPostFromViewModel(PostViewModel post) 
+        public async Task<Post> GetPostFromViewModel(PostViewModel post) 
         {
             Post actualPost = new Post();
             actualPost.Author = post.Author;
@@ -39,6 +39,30 @@ namespace HighOctane.Blog.Helpers
                 actualPost.Tags = await GetTags( post.Tags );
             }
             return actualPost;
+        }
+
+        internal PostViewModel GetViewModelFromPost(Post post)
+        {
+            PostViewModel viewModel = new PostViewModel();
+            viewModel.Id = post.Id;
+            viewModel.Slug = post.Slug;
+            viewModel.CategoryID = post.Category.Id;
+            viewModel.CreatedDate = post.CreatedDate;
+            viewModel.UpdateTime = post.UpdateTime;
+            viewModel.Title = post.Title;
+            viewModel.Excerpt = post.Excerpt;
+            viewModel.Content = post.Content;
+            if (post.Tags != null && post.Tags.Count > 0) 
+            {
+                List<string> tags = new List<string>();
+                foreach (var tag in post.Tags) 
+                {
+                    tags.Add( tag.Name );
+                }
+                viewModel.Tags = tags;
+            }
+
+            return viewModel;
         }
 
         private async Task<List<Tag>> GetTags(List<string> tags)

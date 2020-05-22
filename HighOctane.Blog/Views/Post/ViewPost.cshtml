@@ -7,7 +7,8 @@
             <h2>@Model.Title</h2>
             <br />
             <div class="container text-right mb-3 border-white">
-                <p>Author -->  @Model.Author | Date -->  @Model.CreatedDate</p>
+                <p>Author -->  @Model.Author | Last Updated On -->  @Convert.ToDateTime(Model.UpdateTime.ToString("MM/dd/yyyy HH:mm:ss.fff"),
+                                                                   System.Globalization.CultureInfo.InvariantCulture)</p>
             </div>
             @if (User.Identity.IsAuthenticated)
             {
@@ -26,8 +27,8 @@
         </div>
         <br />
         <div class="card-body mb-3 justify-content-sm-start">
-            <article pubdate="@Model.CreatedDate" class="justify-content-sm-start">
-                <p>@Model.Content</p>
+            <article class="justify-content-sm-start">
+                <p>@Html.Raw(Model.Content)</p>
             </article>
         </div>
     </div>
@@ -44,7 +45,7 @@
             <p>Category: No category available</p>
         }
     </div>
-    <div class="card-body d-flex align-content-center">
+    <div class="card-body d-block">
         @if (Model.Tags != null && Model.Tags.Count > 0)
         {
             @foreach (Tag tag in Model.Tags)
