@@ -10,8 +10,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace HighOctane.Blog.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200518111151_RemoveTimestamo")]
-    partial class RemoveTimestamo
+    [Migration("20200522123112_ForProd")]
+    partial class ForProd
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
