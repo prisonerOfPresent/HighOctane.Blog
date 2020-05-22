@@ -24,6 +24,7 @@ namespace HighOctane.Blog
                 var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
                 var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
+                ctx.Database.EnsureDeleted();
                 ctx.Database.EnsureCreated();
 
                 var adminRole = new IdentityRole("Admin");
