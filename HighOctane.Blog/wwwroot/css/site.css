@@ -7438,6 +7438,3 @@ nav {
   color: var(--font-color);
   border: 1px solid var(--font-color);
   width: 10px; }
-
-.card-body {
-  overflow-x: scroll; }
