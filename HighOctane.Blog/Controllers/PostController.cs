@@ -1,4 +1,5 @@
-﻿using HighOctane.Blog.Models;
+﻿using HighOctane.Blog.Helpers;
+using HighOctane.Blog.Models;
 using HighOctane.Blog.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -13,32 +14,44 @@ namespace HighOctane.Blog.Controllers
     public class PostController : Controller
     {
         IRepository repo { get; set; } 
-        public PostController( IRepository repository ) 
+
+        ICategoryRepository CategoryRepository { get; set; }
+
+        PostHelper postHelper;
+
+        public PostController( IRepository repository, ICategoryRepository categoryRepository, PostHelper helper ) 
         {
             this.repo = repository;
+            this.CategoryRepository = categoryRepository;
+            postHelper = helper;
         }
 
-        public IActionResult ViewPost( int id ) 
+        public IActionResult ViewPost( string id ) 
         {
-            Post post = repo.GetById(id);
+            Post post = repo.GetBySlug(id);
             return View( post );
         }
+
 
         [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult CreateOrEditPost( int? id ) 
         {
+            ViewBag.Categories = CategoryRepository.GetAll().ToList();
+
             if (id is null)
                 return View();
             else 
             {
                 var post = repo.GetById((int)id);
-                return View( post );
+                PostViewModel postViewModel = postHelper.GetViewModelFromPost( post );
+                ViewBag.Tags = postViewModel.Tags;
+                return View( postViewModel );
             }
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateOrEditPost( Post post ) 
+        public async Task<IActionResult> CreateOrEditPost( PostViewModel post ) 
         {
             if (ModelState.IsValid)
             {
@@ -46,7 +59,10 @@ namespace HighOctane.Blog.Controllers
                 {
                     post.Author = User.Identity.Name;
                     post.CreatedDate = DateTime.Now;
-                    repo.Add(post);
+
+                    Post actualPost = await postHelper.GetPostFromViewModel(post);
+
+                    repo.Add(actualPost);
                 }
                 else 
                 {
@@ -54,7 +70,8 @@ namespace HighOctane.Blog.Controllers
                         post.CreatedDate = DateTime.Now;
                     post.UpdateTime = DateTime.Now;
                     post.Author = User.Identity.Name;
-                    repo.Update(post);
+                    Post actualPost = await postHelper.GetPostFromViewModel(post);
+                    repo.Update(actualPost);
                 }
                 bool changesSaved = await repo.SaveChangesAsync();
                 if (changesSaved)

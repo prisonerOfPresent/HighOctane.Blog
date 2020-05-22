@@ -15,9 +15,12 @@ namespace HighOctane.Blog.Repositories
 
         public Post GetById( int id );
 
+        public Post GetBySlug( string slug );
+
         public IEnumerable<Post> GetAll();
 
+        public IEnumerable<Post> GetAllByCategory( Category category );
         public Task<bool> SaveChangesAsync();
-
+        public IEnumerable<Post> GetAllByTag(Tag tag);
     }
 }

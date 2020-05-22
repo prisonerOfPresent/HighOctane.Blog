@@ -1,15 +1,41 @@
-﻿@model Post
-
+﻿@model PostViewModel
 @{ 
     string title;
     if (Model == null )
         title = "Create new Post";
     else
         title = "Edit Post";
+
+
+    List<Category> categories = (List<Category>)ViewBag.Categories;
+    List<string> tagsList = null;
+    if ( ViewBag.Tags != null )
+        tagsList = (List<string>)ViewBag.Tags;
+}
+
+@section Scripts
+{ 
+            @if ( tagsList != null && tagsList.Count > 0 )
+            {
+                foreach (string tag in tagsList) {
+                   <script type="text/javascript"> 
+                       var tagStr = new String('@tag');
+                       console.log("The tag is : " + tagStr);
+                       tags = [];
+                       splitTags = tagStr.split(",");
+                       tags.push(splitTags); 
+                   </script>
+                }
+            }
+
+<script> $( document).ready(function () {
+     addTags();
+    } ); </script>
+
 }
 
 
-<div class="container">
+<div class="container" onkeydown="EnterKeyFilter();" >
 
     <div class="card text-center w-75">
         <div class="card-header mb-3">
@@ -18,10 +44,10 @@
             </h2>
         </div>
         <div class="card-body ">
-            <form asp-action="CreateOrEditPost" asp-controller="Post" method="post" class="form-group">
+            <form asp-action="CreateOrEditPost" asp-controller="Post" method="post" class="form-group" id="form">
                 <div class="form-row">
                     <div class="col-md-12">
-                        <div class="container w-50">
+                        <div class="container w-75">
 
                             <label class="label"> Title </label>
                             <input class="form-control" type="text" asp-for="Title" />
@@ -32,16 +58,70 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="container w-75">
+                            <label class="label"> Slug </label>
+                            <input class="form-control" asp-for="Slug" />
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="container w-75">
+                            <label class="label"> Excerpt </label>
+                            <textarea class="form-control" asp-for="Excerpt"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="container w-75">
+                            <label class="label"> Category </label>
+                            <select class="form-control" asp-for="CategoryID">
+                                @foreach (Category category in categories)
+                                {
+                                    <option class="form-control" value="@category.Id">
+                                        @category.Name
+                                    </option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="container w-100">
                             <label class="label"> Content </label>
                             <textarea class="form-control" asp-for="Content"></textarea>
                         </div>
                     </div>
                 </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="container">
+                            <label class="label"> Tags </label>
+                            <input id ="tagTextField" class="tag-container-input form-control" type="text" />
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="container w-50">
+                            <div id="tagContainer" class="tag-container">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <input id="tags" type="hidden" asp-for="Tags"/>
+                <br/>
                 <hr />
                 <div class="form-row">
                     <div class="col">
                         <div class="container w-25">
-                            <input class="form-control btn" type="submit" value="Save" />
+                            <input class="form-control btn" id="submitBtn" type="submit" value="Save" />
                         </div>
                     </div>
                 </div>

@@ -10,19 +10,25 @@
 </div>
 
 <div class="container">
-    @foreach (Post post in Model) 
+    @foreach (Post post in Model)
     {
         <div class="row">
             <div class="col-xs-12">
-                <a class="lead nav-link" asp-action="ViewPost" asp-controller="Post" asp-route-id="@post.Id">@post.Title</a>
+                <a class="lead nav-link" asp-action="ViewPost" asp-controller="Post" asp-route-id="@post.Slug">@post.Title</a>
             </div>
-                <br/>
-            </div>
-            <div class="row">
-                <div class="container text-left col-xs-12">
-                    <p class="text-light">@post.CreatedDate</p>
-                </div>
+            <br />
         </div>
-        <hr class="border-light"/>
+        <div class="row">
+            <div class="text-left col-xs-12">
+                <p class="nav-link">@post.Excerpt</p>
+            </div>
+            <br/>
+        </div>
+        <div class="row">
+            <div class="text-left col-xs-12">
+                <p class="nav-link">@Convert.ToDateTime(post.UpdateTime.ToString("dddd, dd MMMM yyyy HH:mm:ss.fff"),System.Globalization.CultureInfo.InvariantCulture)</p>
+            </div>
+        </div>
+        <hr class="border" />
     }
 </div>

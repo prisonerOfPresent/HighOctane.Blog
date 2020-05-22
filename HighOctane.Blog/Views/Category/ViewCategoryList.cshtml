@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Category>
+
+
+@{
+    ViewData["Title"] = "Browse Categories";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Categories</h1>
+    <p>Browse Posts by Categories</p>
+</div>
+
+<div class="container">
+    @foreach (Category category in Model)
+    {
+        <div class="row">
+            <div class="col-xs-12">
+                <a class="lead nav-link" asp-action="ViewCategory" asp-controller="Category" asp-route-id="@category.Id">@category.Name</a>
+            </div>
+            <br />
+        </div>
+        <div class="row">
+            <div class="text-left col-xs-12">
+                <p class="nav-link">@category.Description</p>
+            </div>
+        </div>
+        <hr class="border" />
+    }
+</div>

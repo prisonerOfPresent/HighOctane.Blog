@@ -1,0 +1,53 @@
+﻿@model Tag
+
+@{
+    string title;
+    if (Model == null)
+        title = "Create new Tag";
+    else
+        title = "Edit Tag";
+}
+
+
+<div class="container">
+
+    <div class="card text-center w-75">
+        <div class="card-header mb-3">
+            <h2 class="lead">
+                @title
+            </h2>
+        </div>
+        <div class="card-body ">
+            <form asp-action="CreateOrEditTag" asp-controller="Tag" method="post" class="form-group">
+                <div class="form-row">
+                    <div class="col-md-12">
+                        <div class="container w-75">
+
+                            <label class="label"> Name </label>
+                            <input class="form-control" type="text" asp-for="Name" />
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class="form-row">
+                    <div class="col">
+                        <div class="container w-25">
+                            <input class="form-control btn" type="submit" value="Save" />
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@if (!string.IsNullOrEmpty((string)ViewData["CategoryResult"]))
+{
+    <div class="container">
+        @ViewData["CategoryResult"]
+    </div>
+}
+
+<div class="container text-center">
+    <span asp-validation-for="Name" class="label"></span>
+    <br />
+</div>

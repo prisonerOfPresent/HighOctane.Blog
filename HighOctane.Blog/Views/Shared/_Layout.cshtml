@@ -5,30 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - HighOctane.Blog</title>
     <link rel="stylesheet" href="~/css/site.min.css" />
+    <link rel="icon" type="image/x-icon" href="~/assets/favicon.ico">
 </head>
-<body>
-    @*<header>
-            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-                <div class="container">
-                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">HighOctane.Blog</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                        <ul class="navbar-nav flex-grow-1">
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </header>*@
-
+<body class="w-auto">
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3">
             <div class="container">
@@ -36,27 +15,25 @@
                     <li class="nav-item">
                         <a class="nav-link lead" asp-controller="Home" asp-action="Index"> { Home } </a>
                     </li>
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        <li class="nav-item">
-                            <a class="nav-link lead" asp-controller="Post" asp-action="CreateOrEditPost"> { New Post }</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link lead" asp-controller="Auth" asp-action="Logout"> { Sign out } </a>
-                        </li>
-                    }
-
+                    <li class="nav-item">
+                        <a class="nav-link lead" asp-controller="Category" asp-action="ViewCategoryList"> { Categories } </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link lead" asp-controller="Tag" asp-action="ViewTags"> { Tags } </a>
+                    </li>
                 </ul>
-                <div class="navbar-collapse collapse float-right">
-                    <ul class="navbar-nav ml-auto">
+                <div class="navbar-collapse collapse flex-sm-row-reverse">
+                    <ul class="navbar-nav ml-auto flex-sm-row-reverse">
                         <li class="nav-item">
                             <div class="dropdown">
                                 <button class="btn dropdown-toggle lead" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     { Change Theme }
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a id="darkOption" class="dropdown-item" href="#" onclick="setDarkTheme()" >Dark</a>
+                                    <a id="darkOption" class="dropdown-item" href="#" onclick="setDarkTheme()">Dark</a>
+                                    <a id="darkBlueOption" class="dropdown-item" href="#" onclick="setDarkBlueTheme()">Deep Blue</a>
                                     <a id="lightOption" class="dropdown-item" href="#" onclick="setLightTheme()">Fluroscent</a>
+                                    <a id="blueOption" class="dropdown-item" href="#" onclick="setLightBlueTheme()">Light Sky</a>
                                     <a id="herRed" class="dropdown-item" href="#" onclick="setRedTheme()">Passion</a>
                                 </div>
                             </div>
@@ -65,10 +42,34 @@
                 </div>
             </div>
         </nav>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3">
+                <div class="container">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link lead" asp-controller="Post" asp-action="CreateOrEditPost"> { New Post }</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link lead" asp-controller="Category" asp-action="CreateOrEditCategory"> { Create Category } </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link lead" asp-controller="Tag" asp-action="CreateOrEditTag"> { Create Tag } </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link lead" asp-controller="Auth" asp-action="Logout"> { Sign out } </a>
+                        </li>
+                    </ul>
+
+                </div>
+            </nav>
+        }
+
+
     </header>
 
 
-    <div class="container">
+    <div class="container overflow-auto">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
