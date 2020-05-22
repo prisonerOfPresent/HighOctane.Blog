@@ -1,0 +1,22 @@
+﻿@model IEnumerable<Tag>
+
+
+@{
+    ViewData["Title"] = "Browse Tags";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Tags</h1>
+    <p>Browse Posts by Tags</p>
+</div>
+<br/>
+<div class="container d-flex flex-sm-nowrap w-auto">
+    <br/>
+    @foreach (Tag tag in Model)
+    {
+    <span class="badge badge-pill">
+        <a style="margin-top:10px;" class="label" asp-action="ViewTag" asp-controller="Tag" asp-route-id="@tag.Id">#@tag.Name</a>
+    </span>
+        <p>&nbsp;&nbsp;&nbsp;</p>    
+    }
+</div>

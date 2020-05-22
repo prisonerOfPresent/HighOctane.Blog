@@ -40,6 +40,11 @@ namespace HighOctane.Blog.Repositories
             return ctx.Posts.FirstOrDefault(post => post.Id == id);
         }
 
+        public Post GetBySlug( string slug )
+        {
+            return ctx.Posts.FirstOrDefault( post => string.Equals( post.Slug, slug ) );
+        }
+
         public void Update(Post entity)
         {
             ctx.Posts.Update(entity);
@@ -52,6 +57,22 @@ namespace HighOctane.Blog.Repositories
                 return true;
 
             return false;
+        }
+
+        public IEnumerable<Post> GetAllByCategory(Category category)
+        {
+            var posts = from post in ctx.Posts
+                        where post.Category.Id == category.Id
+                        select post;
+            return posts.AsEnumerable();
+        }
+
+        public IEnumerable<Post> GetAllByTag(Tag tag)
+        {
+            var posts = from post in ctx.Posts
+                        where post.Tags.Contains(tag)
+                        select post;
+            return posts;
         }
     }
 }

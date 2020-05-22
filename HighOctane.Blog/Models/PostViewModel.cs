@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace HighOctane.Blog.Models
 {
-    public class Post
+    public class PostViewModel
     {
-
         public int Id { get; set; }
 
         [Required]
@@ -25,21 +23,13 @@ namespace HighOctane.Blog.Models
         [Required]
         public string Content { get; set; }
 
-        public virtual List<Tag> Tags { get; set; }
+        public List<string> Tags { get; set; }
 
-        public virtual Category Category { get; set; }
+        public string CategoryID { get; set; }
 
         public string Slug { get; set; }
 
         [Required]
         public string Excerpt { get; set; }
-
-        public string GetSlug( string text ) 
-        {
-          
-            return Regex
-                .Replace(text, "/^[a - z0 - 9] +(?:-[a - z0 - 9] +)* $/","-", RegexOptions.IgnoreCase);
-        }
-
     }
 }

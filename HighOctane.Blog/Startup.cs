@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using HighOctane.Blog.Data;
+using HighOctane.Blog.Helpers;
 using HighOctane.Blog.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -47,6 +48,7 @@ namespace HighOctane.Blog
 
             services.AddDbContext<AppDbContext>(options =>
                 options
+                .UseLazyLoadingProxies()
                 .UseNpgsql(builder.ConnectionString));
 
 
@@ -70,6 +72,10 @@ namespace HighOctane.Blog
 
             //Adding the post repo
             services.AddTransient<IRepository, PostRepository>();
+            services.AddTransient<ICategoryRepository, CategoryRepository>();
+            services.AddTransient<ITagRepositiry, TagRepository>();
+            services.AddTransient<PostHelper>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

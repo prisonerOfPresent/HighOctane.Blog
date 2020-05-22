@@ -2,7 +2,7 @@
 
 
 <div class="container">
-    <div class="card mb-3 border-white">
+    <div class="card mb-3 float-left w-75">
         <div class="card-header text-center mb-3">
             <h2>@Model.Title</h2>
             <br />
@@ -25,8 +25,37 @@
             }
         </div>
         <br />
-        <div class="card-body mb-3 text-center">
-            <p>@Html.Raw(Model.Content)</p>
+        <div class="card-body mb-3 justify-content-sm-start">
+            <article pubdate="@Model.CreatedDate" class="justify-content-sm-start">
+                <p>@Model.Content</p>
+            </article>
         </div>
     </div>
 </div>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<section class="card float-right w-25">
+    <div class="card-header">
+        @if (Model.Category != null)
+        {
+            <p> Category :  @Model.Category.Description</p>
+        }
+        else
+        {
+            <p>Category: No category available</p>
+        }
+    </div>
+    <div class="card-body d-flex align-content-center">
+        @if (Model.Tags != null && Model.Tags.Count > 0)
+        {
+            @foreach (Tag tag in Model.Tags)
+            {
+                <a class="badge badge-pill" asp-controller="Tag" asp-action="ViewTag" asp-route-id="@tag.Id" >  #@tag.Name  </a>
+                <p>&nbsp;&nbsp;</p>
+            }
+        }
+        else
+        {
+            <span class="badge badge-pill">No tags</span>
+        }
+    </div>
+</section>

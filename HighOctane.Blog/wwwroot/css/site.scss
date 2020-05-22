@@ -1,5 +1,5 @@
 ﻿@import "../lib/bootstrap/scss/bootstrap.scss";
-
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
 :root {
     --primary-color: #302AE6;
@@ -10,7 +10,7 @@
     --heading-color: #fff;
 }
 
-[data-theme="dark"] {
+[data-theme="darkblue"] {
     --primary-color: #9A97F3;
     --secondary-color: #818cab;
     --font-color: #e1e1ff;
@@ -21,6 +21,25 @@
 
 
 [data-theme="light"] {
+    --primary-color: #000;
+    --secondary-color: #536390;
+    --font-color: #000;
+    --font-color-hover: #536390;
+    --bg-color: #fff;
+    --heading-color: #000;
+}
+
+
+[data-theme="dark"] {
+    --primary-color: #fff;
+    --secondary-color: #536390;
+    --font-color: #fff;
+    --font-color-hover: #536390;
+    --bg-color: #000;
+    --heading-color: #fff;
+}
+
+[data-theme="lightblue"] {
     --primary-color: #000;
     --secondary-color: #818cab;
     --font-color: #000;
@@ -60,6 +79,22 @@ a.navbar-brand {
     background-color: var(--bg-color);
     color: var(--font-color);
     border-color: var(--font-color);
+}
+
+.badge-pill {
+    margin-top:1px;
+    background-color: var(--bg-color);
+    color: var(--font-color);
+    border-color: var(--font-color);
+    border-width: thin;
+}
+
+.badge {
+    margin-top:1px;
+    background-color: var(--bg-color);
+    color: var(--font-color);
+    border-color: var(--font-color);
+    border-width: thin;
 }
 
 .dropdown-item {
@@ -104,6 +139,13 @@ a.navbar-brand {
     }
 }
 
+
+.border{
+    color: var(--font-color);
+    border-color: var(--font-color);
+    background-color:var(--bg-color);
+    border-style: solid;
+}
 
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
@@ -154,7 +196,7 @@ html {
 }
 
 body {
-    font-family: Consolas, 'Segoe UI';
+    font-family: 'Consolas', 'Segoe UI';
     background-color: var(--bg-color);
     color: var(--font-color);
     /* Margin bottom by footer height */
@@ -177,10 +219,11 @@ a {
     color: var(--font-color);
     text-decoration: none;
 
-    &:hover, &:focus ,&:active{
+    &:hover, &:focus, &:active {
         background-color: var(--bg-color);
         color: var(--font-color-hover);
         border-color: var(--font-color);
+        text-decoration: none;
     }
 }
 
@@ -225,3 +268,35 @@ nav {
 }
 
 
+.tag-container{
+    border : 1px solid var(--font-color);
+    padding : 10px;
+    border-radius : 5px;
+    display:flex;
+    flex:1;
+    flex-wrap:wrap;
+    overflow-x:scroll;
+    align-content:flex-start;
+}
+
+
+.tag{
+    padding : 5px;
+    margin : 5px;
+    border : 1px solid var(--font-color);
+    display : flex;
+    align-items: center;
+    border-radius:3px;
+    cursor:pointer;
+}
+
+.tag i{
+    margin-left : 5px;
+    font-size: 14px;
+    
+}
+
+.tag-container-input{
+    flex:1;
+    padding:5px;
+}

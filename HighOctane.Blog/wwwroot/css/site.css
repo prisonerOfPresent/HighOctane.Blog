@@ -4,6 +4,7 @@
  * Copyright 2011-2019 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
@@ -7185,7 +7186,7 @@ a.text-dark:hover, a.text-dark:focus {
   --bg-color: #B62F34;
   --heading-color: #fff; }
 
-[data-theme="dark"] {
+[data-theme="darkblue"] {
   --primary-color: #9A97F3;
   --secondary-color: #818cab;
   --font-color: #e1e1ff;
@@ -7194,6 +7195,22 @@ a.text-dark:hover, a.text-dark:focus {
   --heading-color: #818cab; }
 
 [data-theme="light"] {
+  --primary-color: #000;
+  --secondary-color: #536390;
+  --font-color: #000;
+  --font-color-hover: #536390;
+  --bg-color: #fff;
+  --heading-color: #000; }
+
+[data-theme="dark"] {
+  --primary-color: #fff;
+  --secondary-color: #536390;
+  --font-color: #fff;
+  --font-color-hover: #536390;
+  --bg-color: #000;
+  --heading-color: #fff; }
+
+[data-theme="lightblue"] {
   --primary-color: #000;
   --secondary-color: #818cab;
   --font-color: #000;
@@ -7233,6 +7250,20 @@ a.navbar-brand {
   color: var(--font-color);
   border-color: var(--font-color); }
 
+.badge-pill {
+  margin-top: 1px;
+  background-color: var(--bg-color);
+  color: var(--font-color);
+  border-color: var(--font-color);
+  border-width: thin; }
+
+.badge {
+  margin-top: 1px;
+  background-color: var(--bg-color);
+  color: var(--font-color);
+  border-color: var(--font-color);
+  border-width: thin; }
+
 .dropdown-item {
   background-color: var(--bg-color);
   color: var(--font-color);
@@ -7267,6 +7298,12 @@ a.navbar-brand {
     background-color: var(--bg-color);
     color: var(--font-color);
     border-color: var(--font-color); }
+
+.border {
+  color: var(--font-color);
+  border-color: var(--font-color);
+  background-color: var(--bg-color);
+  border-style: solid; }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
   color: #fff;
@@ -7306,7 +7343,7 @@ html {
   /* Vertically center the text there */ }
 
 body {
-  font-family: Consolas, 'Segoe UI';
+  font-family: 'Consolas', 'Segoe UI';
   background-color: var(--bg-color);
   color: var(--font-color);
   /* Margin bottom by footer height */
@@ -7328,7 +7365,8 @@ a {
   a:hover, a:focus, a:active {
     background-color: var(--bg-color);
     color: var(--font-color-hover);
-    border-color: var(--font-color); }
+    border-color: var(--font-color);
+    text-decoration: none; }
 
 section {
   max-width: 68%;
@@ -7361,3 +7399,30 @@ nav {
     background-color: var(--bg-color);
     color: var(--font-color-hover);
     border-color: var(--font-color); }
+
+.tag-container {
+  border: 1px solid var(--font-color);
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  overflow-x: scroll;
+  align-content: flex-start; }
+
+.tag {
+  padding: 5px;
+  margin: 5px;
+  border: 1px solid var(--font-color);
+  display: flex;
+  align-items: center;
+  border-radius: 3px;
+  cursor: pointer; }
+
+.tag i {
+  margin-left: 5px;
+  font-size: 14px; }
+
+.tag-container-input {
+  flex: 1;
+  padding: 5px; }

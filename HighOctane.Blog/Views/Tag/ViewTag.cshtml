@@ -1,0 +1,48 @@
+﻿@model Tag
+
+@{
+    IEnumerable<Post> posts = ViewBag.Posts;
+    ViewData["Title"] = "Tag - " + Model.Name;
+}
+
+
+<div class="text-center">
+    <h1 class="display-4">Tag</h1>
+    <p>Posts tagged with : @Model.Name </p>
+</div>
+
+<br />
+
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="container text-left mb-3">
+        <div class="row">
+            @*<div class="col-xs-6">
+                <a class="nav-link" asp-action="CreateOrEditTag" asp-controller="Tag" asp-route-id="@Model.Id">Edit</a>
+            </div>*@
+            <div class="col-xs-6">
+                <a class="nav-link" asp-action="DeleteTag" asp-controller="Tag" asp-route-id="@Model.Id">Delete</a>
+            </div>
+        </div>
+    </div>
+
+}
+
+<br />
+<div class="container">
+    @foreach (Post post in posts)
+    {
+        <div class="row">
+            <div class="col-xs-12">
+                <a class="lead nav-link" asp-action="ViewPost" asp-controller="Post" asp-route-id="@post.Slug">@post.Title</a>
+            </div>
+            <br />
+        </div>
+        <div class="row">
+            <div class="text-left col-xs-12">
+                <p class="nav-link">@post.CreatedDate</p>
+            </div>
+        </div>
+        <hr class="border" />
+    }
+</div>

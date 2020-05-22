@@ -21,8 +21,14 @@ namespace HighOctane.Blog.Data
         public static void DoMigrate( AppDbContext appDbContext ) 
         {
             Console.WriteLine("Applying Migrations...");
-            if ( appDbContext.Database.GetMigrations() == null )
+            try
+            {
                 appDbContext.Database.Migrate();
+            }
+            catch (Exception ex) 
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }
