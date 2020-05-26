@@ -334,3 +334,13 @@ nav {
     background-color:var(--font-color);
     border-top: 1px solid var(--bg-color);
 }
+
+blockquote{
+    @extend .blockquote;
+    padding: 10px;
+    padding-top: 15px;
+    margin-top: 5px;
+    border : 1px dotted var(--font-color);
+    border-left:10px solid var(--font-color);
+
+}
