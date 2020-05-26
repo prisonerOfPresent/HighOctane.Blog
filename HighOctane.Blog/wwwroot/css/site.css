@@ -376,7 +376,7 @@ mark,
   font-size: 90%;
   text-transform: uppercase; }
 
-.blockquote {
+.blockquote, blockquote {
   margin-bottom: 1rem;
   font-size: 1.25rem; }
 
@@ -7452,3 +7452,10 @@ nav {
   color: var(--bg-color);
   background-color: var(--font-color);
   border-top: 1px solid var(--bg-color); }
+
+blockquote {
+  padding: 10px;
+  padding-top: 15px;
+  margin-top: 5px;
+  border: 1px dotted var(--font-color);
+  border-left: 10px solid var(--font-color); }
