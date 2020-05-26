@@ -43,6 +43,7 @@ const tagInput = document.getElementById('tagTextField');
 const submitButton = document.getElementById('submitBtn');
 
 var tags = [];
+var tagList = [];
 
 function reset() {
     document.querySelectorAll(".tag").forEach(function (tag) {
@@ -70,6 +71,27 @@ tagInput.addEventListener('keyup', function (e) {
         addTags();
         tagInput.value = '';
     }
+
+
+    const input = tagInput.value;
+    document.querySelector('.suggestions').innerHTML = ''; 
+    const suggestions = tagList.filter(function (tagName) {
+        return tagName.toLowerCase().startsWith(input.toLowerCase());
+    });
+    console.log("Actual tags : " + tagList );
+    console.log(suggestions);
+    suggestions.forEach(function (suggestion) {
+        const suggestionDiv = document.createElement('div');
+        suggestionDiv.innerHTML = suggestion;
+        suggestionDiv.addEventListener('click', function () {
+            tagInput.value = suggestionDiv.innerHTML;
+            document.querySelector('.suggestions').innerHTML = '';
+        });
+        document.querySelector('.suggestions').appendChild(suggestionDiv );
+    });
+    if (input === '')
+        document.querySelector('.suggestions').innerHTML = '';
+
 });
 
 function EnterKeyFilter() {

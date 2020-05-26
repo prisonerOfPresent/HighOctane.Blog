@@ -1,41 +1,63 @@
 ﻿@model PostViewModel
-@{ 
+@{
     string title;
-    if (Model == null )
+    if (Model == null)
         title = "Create new Post";
     else
         title = "Edit Post";
 
 
     List<Category> categories = (List<Category>)ViewBag.Categories;
+    List<Tag> availableTags = (List<Tag>)ViewBag.AvailableTags;
     List<string> tagsList = null;
-    if ( ViewBag.Tags != null )
+    if (ViewBag.Tags != null)
         tagsList = (List<string>)ViewBag.Tags;
 }
 
 @section Scripts
-{ 
-            @if ( tagsList != null && tagsList.Count > 0 )
-            {
-                foreach (string tag in tagsList) {
-                   <script type="text/javascript"> 
+{
+
+    <script>
+        tags = [];
+        tagList = [];
+    </script>
+
+    @if (tagsList != null && tagsList.Count > 0)
+    {
+        foreach (string tag in tagsList)
+        {
+            <script type="text/javascript">
+
                        var tagStr = new String('@tag');
                        console.log("The tag is : " + tagStr);
-                       tags = [];
                        splitTags = tagStr.split(",");
-                       tags.push(splitTags); 
-                   </script>
-                }
-            }
+                       tags.push(splitTags);
+            </script>
+        }
+    }
 
-<script> $( document).ready(function () {
-     addTags();
-    } ); </script>
+    @if (availableTags != null && availableTags.Count > 0)
+    {
+        foreach (var tag in availableTags)
+        {
+            <script type="text/javascript">
+                       var tagStr = new String('@tag.Name');
+                       console.log("The tag is : " + tagStr);
+                       tagList.push(tagStr);
+            </script>
+        }
+    }
+
+    <script>
+        $(document).ready(function () {
+            addTags();
+        });
+    </script>
 
 }
 
 
-<div class="container" onkeydown="EnterKeyFilter();" >
+<div class="container">
 
     <div class="card text-center w-75">
         <div class="card-header mb-3">
@@ -89,24 +111,17 @@
                     </div>
                 </div>
                 <br />
-                <div class="row">
+                <div class="row" onkeydown="EnterKeyFilter();">
                     <div class="col-md-12">
-                        <div class="container w-100">
-                            <label class="label"> Content </label>
-                            <textarea class="form-control" asp-for="Content"></textarea>
+                        <div class="container">
+                            <label class="label"> Tags </label>
+                            <input id="tagTextField" class="tag-container-input form-control" type="text" />
+                            <div class="suggestions">
+                            </div>
                         </div>
                     </div>
                 </div>
                 <br />
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="container">
-                            <label class="label"> Tags </label>
-                            <input id ="tagTextField" class="tag-container-input form-control" type="text" />
-                        </div>
-                    </div>
-                </div>
-                <br/>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="container w-50">
@@ -115,8 +130,17 @@
                         </div>
                     </div>
                 </div>
-                <input id="tags" type="hidden" asp-for="Tags"/>
-                <br/>
+                <input id="tags" type="hidden" asp-for="Tags" />
+                <br />
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="container w-100">
+                            <label class="label"> Content </label>
+                            <textarea class="form-control" asp-for="Content" cols="10" rows="10"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <br />
                 <hr />
                 <div class="form-row">
                     <div class="col">

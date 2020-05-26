@@ -17,12 +17,18 @@ namespace HighOctane.Blog.Controllers
 
         ICategoryRepository CategoryRepository { get; set; }
 
+        ITagRepositiry TagRepositiry { get; set; }
+
         PostHelper postHelper;
 
-        public PostController( IRepository repository, ICategoryRepository categoryRepository, PostHelper helper ) 
+        public PostController( IRepository repository, 
+            ICategoryRepository categoryRepository,
+            ITagRepositiry tagRepositiry,
+            PostHelper helper ) 
         {
             this.repo = repository;
             this.CategoryRepository = categoryRepository;
+            this.TagRepositiry = tagRepositiry;
             postHelper = helper;
         }
 
@@ -40,13 +46,19 @@ namespace HighOctane.Blog.Controllers
             ViewBag.Categories = CategoryRepository.GetAll().ToList();
 
             if (id is null)
+            {
+                IEnumerable<Tag> tags = TagRepositiry.GetAll().ToList();
+                ViewBag.AvailableTags = tags;
                 return View();
-            else 
+            }
+            else
             {
                 var post = repo.GetById((int)id);
-                PostViewModel postViewModel = postHelper.GetViewModelFromPost( post );
+                PostViewModel postViewModel = postHelper.GetViewModelFromPost(post);
+                IEnumerable<Tag> tags = TagRepositiry.GetAll().ToList();
                 ViewBag.Tags = postViewModel.Tags;
-                return View( postViewModel );
+                ViewBag.AvailableTags = tags;
+                return View(postViewModel);
             }
         }
 

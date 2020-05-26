@@ -316,3 +316,21 @@ nav {
     border:1px solid var(--font-color);
     width:10px;
 }
+
+
+.suggestions{
+    margin-top : 5px;
+}
+
+.suggestions > div {
+    padding : 15px;
+    font-size : 14px;
+    color : var(--font-color);
+    border-top : 1px solid var(--font-color);
+}
+
+.suggestions > div:hover {
+    color: var(--bg-color);
+    background-color:var(--font-color);
+    border-top: 1px solid var(--bg-color);
+}
