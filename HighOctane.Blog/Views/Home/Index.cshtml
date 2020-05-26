@@ -2,15 +2,17 @@
 
 @{
     ViewData["Title"] = "Home Page";
+    List<Post> posts = Model.ToList();
+    posts = posts.OrderByDescending( p => p.CreatedDate ).ToList();
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
+    <h1 class="display-4">Hello There.</h1>
     <p>A very unusual blog.</p>
 </div>
 
 <div class="container">
-    @foreach (Post post in Model)
+    @foreach (Post post in posts)
     {
         <div class="row">
             <div class="col-xs-12">
@@ -25,8 +27,11 @@
             <br/>
         </div>
         <div class="row">
-            <div class="text-left col-xs-12">
-                <p class="nav-link">@Convert.ToDateTime(post.UpdateTime.ToString("dddd, dd MMMM yyyy HH:mm:ss.fff"),System.Globalization.CultureInfo.InvariantCulture)</p>
+            <div class="text-left col-xs-6">
+                <p class="nav-link">@Convert.ToDateTime(post.UpdateTime.ToString("dddd, dd MMMM yyyy HH:mm:ss.fff"), System.Globalization.CultureInfo.InvariantCulture)</p>
+            </div>
+            <div class="col-xs-6">
+                <p class="nav-link"> Category : <a asp-action="ViewCategory" asp-controller="Category" asp-route-id=@post.Category.Id> @post.Category.Name</a> </p>
             </div>
         </div>
         <hr class="border" />

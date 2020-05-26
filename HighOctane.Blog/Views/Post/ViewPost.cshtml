@@ -1,4 +1,9 @@
 ﻿@model Post
+@using Markdig
+
+@{ 
+    String html = Markdig.Markdown.ToHtml(Model.Content);
+}
 
 
 <div class="container">
@@ -28,7 +33,7 @@
         <br />
         <div class="card-body mb-3 justify-content-sm-start">
             <article class="justify-content-sm-start">
-                <p>@Html.Raw(Model.Content)</p>
+                <p>@Html.Raw(html)</p>
             </article>
         </div>
     </div>
