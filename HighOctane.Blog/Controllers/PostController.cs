@@ -13,20 +13,20 @@ namespace HighOctane.Blog.Controllers
 {
     public class PostController : Controller
     {
-        IRepository repo { get; set; } 
+        IRepository Repo { get; set; } 
 
         ICategoryRepository CategoryRepository { get; set; }
 
         ITagRepositiry TagRepositiry { get; set; }
 
-        PostHelper postHelper;
+        readonly PostHelper postHelper;
 
         public PostController( IRepository repository, 
             ICategoryRepository categoryRepository,
             ITagRepositiry tagRepositiry,
             PostHelper helper ) 
         {
-            this.repo = repository;
+            this.Repo = repository;
             this.CategoryRepository = categoryRepository;
             this.TagRepositiry = tagRepositiry;
             postHelper = helper;
@@ -34,7 +34,7 @@ namespace HighOctane.Blog.Controllers
 
         public IActionResult ViewPost( string id ) 
         {
-            Post post = repo.GetBySlug(id);
+            Post post = Repo.GetBySlug(id);
             return View( post );
         }
 
@@ -53,7 +53,7 @@ namespace HighOctane.Blog.Controllers
             }
             else
             {
-                var post = repo.GetById((int)id);
+                var post = Repo.GetById((int)id);
                 PostViewModel postViewModel = postHelper.GetViewModelFromPost(post);
                 IEnumerable<Tag> tags = TagRepositiry.GetAll().ToList();
                 ViewBag.Tags = postViewModel.Tags;
@@ -74,7 +74,7 @@ namespace HighOctane.Blog.Controllers
 
                     Post actualPost = await postHelper.GetPostFromViewModel(post);
 
-                    repo.Add(actualPost);
+                    Repo.Add(actualPost);
                 }
                 else 
                 {
@@ -83,9 +83,9 @@ namespace HighOctane.Blog.Controllers
                     post.UpdateTime = DateTime.Now;
                     post.Author = User.Identity.Name;
                     Post actualPost = await postHelper.GetPostFromViewModel(post);
-                    repo.Update(actualPost);
+                    Repo.Update(actualPost);
                 }
-                bool changesSaved = await repo.SaveChangesAsync();
+                bool changesSaved = await Repo.SaveChangesAsync();
                 if (changesSaved)
                     return RedirectToAction("Index", "Home");
                 else
@@ -105,8 +105,8 @@ namespace HighOctane.Blog.Controllers
 
         public async Task<IActionResult> DeletePost( int id ) 
         {
-            repo.Delete( id );
-            await repo.SaveChangesAsync();
+            Repo.Delete( id );
+            await Repo.SaveChangesAsync();
             return RedirectToAction("Index","Home");
         }
 

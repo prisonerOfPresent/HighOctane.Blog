@@ -6,6 +6,7 @@
     else
         title = "Edit Post";
 
+    ViewData["Title"] = title;
 
     List<Category> categories = (List<Category>)ViewBag.Categories;
     List<Tag> availableTags = (List<Tag>)ViewBag.AvailableTags;
@@ -30,8 +31,7 @@
 
                        var tagStr = new String('@tag');
                        console.log("The tag is : " + tagStr);
-                       splitTags = tagStr.split(",");
-                       tags.push(splitTags);
+                       tags.push(tagStr);
             </script>
         }
     }
