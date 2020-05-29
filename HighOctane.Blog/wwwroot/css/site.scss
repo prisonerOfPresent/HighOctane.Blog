@@ -167,11 +167,11 @@ html {
 }
 
 .border-top {
-    border-top: 1px solid #e5e5e5;
+    border-top: 1px solid var(--font-color);
 }
 
 .border-bottom {
-    border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid var(--font-color);
 }
 
 .box-shadow {
@@ -196,7 +196,7 @@ html {
 }
 
 body {
-    font-family: 'Consolas', 'Segoe UI';
+    font-family: 'Consolas','Inconsolata', 'Segoe UI', monospace;
     background-color: var(--bg-color);
     color: var(--font-color);
     /* Margin bottom by footer height */
@@ -343,4 +343,7 @@ blockquote{
     border : 1px dotted var(--font-color);
     border-left:10px solid var(--font-color);
 
+}
+.card-body{
+    overflow-x : scroll;
 }

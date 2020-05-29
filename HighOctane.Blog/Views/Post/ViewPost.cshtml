@@ -2,6 +2,7 @@
 @using Markdig
 
 @{ 
+    ViewData["Title"] = "Read Post";
     String html = Markdig.Markdown.ToHtml(Model.Content);
 }
 

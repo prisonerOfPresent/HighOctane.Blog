@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="~/css/site.min.css" />
     <link rel="icon" type="image/x-icon" href="~/assets/favicon.ico">
 </head>
-<body class="w-auto">
+<body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3">
             <div class="container">
@@ -22,24 +22,23 @@
                         <a class="nav-link lead" asp-controller="Tag" asp-action="ViewTags"> { Tags } </a>
                     </li>
                 </ul>
-                <div class="navbar-collapse collapse flex-sm-row-reverse">
-                    <ul class="navbar-nav ml-auto flex-sm-row-reverse">
-                        <li class="nav-item">
-                            <div class="dropdown">
-                                <button class="btn dropdown-toggle lead" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    { Change Theme }
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a id="darkOption" class="dropdown-item" href="#" onclick="setDarkTheme()">Dark</a>
-                                    <a id="darkBlueOption" class="dropdown-item" href="#" onclick="setDarkBlueTheme()">Deep Blue</a>
-                                    <a id="lightOption" class="dropdown-item" href="#" onclick="setLightTheme()">Fluroscent</a>
-                                    <a id="blueOption" class="dropdown-item" href="#" onclick="setLightBlueTheme()">Light Sky</a>
-                                    <a id="herRed" class="dropdown-item" href="#" onclick="setRedTheme()">Passion</a>
-                                </div>
+                <ul class="navbar-nav ml-auto flex-sm-row-reverse">
+                    <li class="nav-item">
+                        <div class="dropdown">
+                            <button class="btn dropdown-toggle lead" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                { Change Theme }
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a id="darkOption" class="dropdown-item" href="#" onclick="setDarkTheme()">Dark</a>
+                                <a id="darkBlueOption" class="dropdown-item" href="#" onclick="setDarkBlueTheme()">Deep Blue</a>
+                                <a id="lightOption" class="dropdown-item" href="#" onclick="setLightTheme()">Fluroscent</a>
+                                <a id="blueOption" class="dropdown-item" href="#" onclick="setLightBlueTheme()">Light Sky</a>
+                                <a id="herRed" class="dropdown-item" href="#" onclick="setRedTheme()">Passion</a>
                             </div>
-                        </li>
-                    </ul>
-                </div>
+                        </div>
+                    </li>
+                </ul>
+
             </div>
         </nav>
         @if (User.Identity.IsAuthenticated)
@@ -69,8 +68,8 @@
     </header>
 
 
-    <div class="container overflow-auto">
-        <main role="main" class="pb-3">
+    <div class="container overflow-hidden">
+        <main role="main" class="pb-3 overflow-hidden">
             @RenderBody()
         </main>
     </div>
