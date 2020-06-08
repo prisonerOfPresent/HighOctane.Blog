@@ -5,25 +5,29 @@
     ViewData["Title"] = "Browse Categories";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Categories</h1>
-    <p>Browse Posts by Categories</p>
+<div class="container-fluid">
+    <div class="text-center">
+        <h2 class="display-4">Categories</h2>
+        <p>Browse Posts by Categories</p>
+    </div>
 </div>
 
-<div class="container">
-    @foreach (Category category in Model)
-    {
-        <div class="row">
-            <div class="col-xs-12">
-                <a class="lead nav-link" asp-action="ViewCategory" asp-controller="Category" asp-route-id="@category.Id">@category.Name</a>
-            </div>
-            <br />
-        </div>
-        <div class="row">
-            <div class="text-left col-xs-12">
-                <p class="nav-link">@category.Description</p>
-            </div>
-        </div>
-        <hr class="border" />
-    }
+<br />
+
+<div class="container-fluid">
+    <ul class="d-sm-inline-flex no-bullets no-padding">
+        @foreach (Category category in Model)
+        {
+            <li class="container-sm">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="text-center">
+                            <a class="lead nav-link" asp-action="ViewCategory" asp-controller="Category" asp-route-id="@category.Id">@category.Name</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        }
+        &nbsp;
+    </ul>
 </div>

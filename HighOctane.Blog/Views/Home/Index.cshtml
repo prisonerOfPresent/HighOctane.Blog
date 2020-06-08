@@ -6,32 +6,46 @@
     posts = posts.OrderByDescending( p => p.CreatedDate ).ToList();
 }
 
-<div class="text-center">
-    <h1 class="display-4">Hello There.</h1>
-    <p>A very unusual blog.</p>
+<br/>
+
+<div class="text-center container-sm">
+    <h1 class="display-4">Uninspired Utterings</h1>
+    <br/>
+    <p>A place where a prisoner of the present rants the most..</p>
+    <p> And Things Will Be In CamelCase. </p>
 </div>
 
-<div class="container">
+<br/>
+
+<hr class="border"/>
+
+<br/>
+
+<div class="container-sm w-75">
     @foreach (Post post in posts)
     {
-        <div class="row">
-            <div class="col-xs-12">
-                <a class="lead nav-link" asp-action="ViewPost" asp-controller="Post" asp-route-id="@post.Slug">@post.Title</a>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12">
+                    <a class="text-left h4" asp-action="ViewPost" asp-controller="Post" asp-route-id="@post.Slug">@post.Title</a>
+                </div>
+                <br />
             </div>
             <br />
-        </div>
-        <div class="row">
-            <div class="text-left col-xs-12">
-                <p class="nav-link">@post.Excerpt</p>
+            <div class="row">
+                <div class="text-left col-xs-12">
+                    <p class="text-sm-left h6">@post.Excerpt</p>
+                </div>
+                <br />
             </div>
-            <br/>
-        </div>
-        <div class="row">
-            <div class="text-left col-xs-6">
-                <p class="nav-link">@Convert.ToDateTime(post.UpdateTime.ToString("dddd, dd MMMM yyyy HH:mm:ss.fff"), System.Globalization.CultureInfo.InvariantCulture)</p>
-            </div>
-            <div class="col-xs-6">
-                <p class="nav-link"> Category : <a asp-action="ViewCategory" asp-controller="Category" asp-route-id=@post.Category.Id> @post.Category.Name</a> </p>
+            <br />
+            <div class="row">
+                <div class="text-left col-xs-6">
+                    <p class="text-sm-left h6">@Convert.ToDateTime(post.UpdateTime.ToString("dddd, dd MMMM yyyy HH:mm:ss.fff"), System.Globalization.CultureInfo.InvariantCulture)</p>
+                </div>
+                <div class="col-xs-6">
+                    <p class="text-sm h6"> &nbsp;Category : <a asp-action="ViewCategory" asp-controller="Category" asp-route-id=@post.Category.Id> @post.Category.Name</a> </p>
+                </div>
             </div>
         </div>
         <hr class="border" />

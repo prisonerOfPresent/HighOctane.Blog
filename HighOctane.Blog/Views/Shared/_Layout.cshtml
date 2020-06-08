@@ -10,7 +10,7 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3">
-            <div class="container">
+            <div class="container-fluid">
                 <ul class="navbar-nav flex-grow-1">
                     <li class="nav-item">
                         <a class="nav-link lead" asp-controller="Home" asp-action="Index"> { Home } </a>
@@ -44,7 +44,7 @@
         @if (User.Identity.IsAuthenticated)
         {
             <nav class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3">
-                <div class="container">
+                <div class="container-fluid">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link lead" asp-controller="Post" asp-action="CreateOrEditPost"> { New Post }</a>
@@ -68,14 +68,14 @@
     </header>
 
 
-    <div class="container overflow-hidden">
+    <div class="overflow-hidden">
         <main role="main" class="pb-3 overflow-hidden">
             @RenderBody()
         </main>
     </div>
 
     <footer class="border-top footer">
-        <div class="container">
+        <div class="container-fluid">
             &copy; 2020 - HighOctane.Blog
         </div>
     </footer>

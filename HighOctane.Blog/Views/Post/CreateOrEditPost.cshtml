@@ -57,7 +57,7 @@
 }
 
 
-<div class="container">
+<div class="container-fluid">
 
     <div class="card text-center w-75">
         <div class="card-header mb-3">
@@ -69,7 +69,7 @@
             <form asp-action="CreateOrEditPost" asp-controller="Post" method="post" class="form-group" id="form">
                 <div class="form-row">
                     <div class="col-md-12">
-                        <div class="container w-75">
+                        <div class="container-fluid w-75">
 
                             <label class="label"> Title </label>
                             <input class="form-control" type="text" asp-for="Title" />
@@ -79,7 +79,7 @@
                 <br />
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="container w-75">
+                        <div class="container-fluid w-75">
                             <label class="label"> Slug </label>
                             <input class="form-control" asp-for="Slug" />
                         </div>
@@ -88,7 +88,7 @@
                 <br />
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="container w-75">
+                        <div class="container-fluid w-75">
                             <label class="label"> Excerpt </label>
                             <textarea class="form-control" asp-for="Excerpt"></textarea>
                         </div>
@@ -97,7 +97,7 @@
                 <br />
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="container w-75">
+                        <div class="container-fluid w-75">
                             <label class="label"> Category </label>
                             <select class="form-control" asp-for="CategoryID">
                                 @foreach (Category category in categories)
@@ -113,7 +113,7 @@
                 <br />
                 <div class="row" onkeydown="EnterKeyFilter();">
                     <div class="col-md-12">
-                        <div class="container">
+                        <div class="container-fluid">
                             <label class="label"> Tags </label>
                             <input id="tagTextField" class="tag-container-input form-control" type="text" />
                             <div class="suggestions">
@@ -124,7 +124,7 @@
                 <br />
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="container w-50">
+                        <div class="container-fluid w-50">
                             <div id="tagContainer" class="tag-container">
                             </div>
                         </div>
@@ -134,7 +134,7 @@
                 <br />
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="container w-100">
+                        <div class="container-fluid w-100">
                             <label class="label"> Content </label>
                             <textarea class="form-control" asp-for="Content" cols="10" rows="10"></textarea>
                         </div>
@@ -144,7 +144,7 @@
                 <hr />
                 <div class="form-row">
                     <div class="col">
-                        <div class="container w-25">
+                        <div class="container-fluid w-25">
                             <input class="form-control btn" id="submitBtn" type="submit" value="Save" />
                         </div>
                     </div>
@@ -160,7 +160,7 @@
     </div>
 }
 
-<div class="container text-center">
+<div class="container-fluid text-center">
     <span asp-validation-for="Title" class="label"></span>
     <br />
     <span asp-validation-for="Content" class="label"></span>

@@ -2,11 +2,12 @@
 
 @{
     IEnumerable<Post> posts = ViewBag.Posts;
+    posts = posts.OrderByDescending(p => p.CreatedDate).ToList();
     ViewData["Title"] = "Category - " + Model.Name;
 }
 
 
-<div class="text-center">
+<div class="text-center container-fluid">
     <h1 class="display-4">Category</h1>
     <p>Posts under category</p>
 </div>
@@ -14,7 +15,7 @@
 <br />
 @if (User.Identity.IsAuthenticated)
 {
-    <div class="container text-left mb-3">
+    <div class="container-fluid text-left mb-3">
         <div class="row">
             <div class="col-xs-6">
                 <a class="nav-link" asp-action="CreateOrEditCategory" asp-controller="Category" asp-route-id="@Model.Id">Edit</a>
@@ -28,20 +29,22 @@
 }
 <br />
 
-<div class="container">
+<div class="container-fluid">
     @foreach (Post post in posts)
     {
+    <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12">
-                <a class="lead nav-link" asp-action="ViewPost" asp-controller="Post" asp-route-id="@post.Slug">@post.Title</a>
+                <a class="lead" asp-action="ViewPost" asp-controller="Post" asp-route-id="@post.Slug">@post.Title</a>
             </div>
             <br />
         </div>
         <div class="row">
-            <div class="text-left col-xs-12">
+            <div class="col-xs-12">
                 <p class="nav-link">@post.CreatedDate</p>
             </div>
         </div>
+    </div>
         <hr class="border" />
     }
 </div>

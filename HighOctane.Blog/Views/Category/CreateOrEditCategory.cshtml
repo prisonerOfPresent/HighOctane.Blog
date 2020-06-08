@@ -10,7 +10,7 @@
 }
 
 
-<div class="container">
+<div class="container-fluid">
 
     <div class="card text-center w-75">
         <div class="card-header mb-3">
@@ -22,7 +22,7 @@
             <form asp-action="CreateOrEditCategory" asp-controller="Category" method="post" class="form-group">
                 <div class="form-row">
                     <div class="col-md-12">
-                        <div class="container w-75">
+                        <div class="container-fluid w-75">
 
                             <label class="label"> Name </label>
                             <input class="form-control" type="text" asp-for="Name" />
@@ -32,7 +32,7 @@
                 <br />
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="container w-75">
+                        <div class="container-fluid w-75">
                             <label class="label"> Description </label>
                             <textarea class="form-control" asp-for="Description"></textarea>
                         </div>
@@ -41,7 +41,7 @@
                 <hr />
                 <div class="form-row">
                     <div class="col">
-                        <div class="container w-25">
+                        <div class="container-fluid w-25">
                             <input class="form-control btn" type="submit" value="Save" />
                         </div>
                     </div>
@@ -52,12 +52,12 @@
 </div>
 @if (!string.IsNullOrEmpty((string)ViewData["CategoryResult"]))
 {
-    <div class="container">
+    <div class="container-fluid">
         @ViewData["CategoryResult"]
     </div>
 }
 
-<div class="container text-center">
+<div class="container-fluid text-center">
     <span asp-validation-for="Name" class="label"></span>
     <br />
     <span asp-validation-for="Description" class="label"></span>
