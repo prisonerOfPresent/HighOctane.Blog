@@ -121,6 +121,10 @@ a.navbar-brand {
     border-color: var(--font-color);
 }
 
+* {
+    box-sizing: border-box;
+}
+
 /*.btn {
     color: var(--font-color);
     background-color: var(--bg-color);
@@ -157,14 +161,41 @@ a.navbar-brand {
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-    font-size: 14px;
+    font-size: 1em;
 }
 
-@media (min-width: 768px) {
-    html {
-        font-size: 16px;
+.mainPost {
+    width: 100%;
+}
+
+.metaBox {
+    width: 100%;
+    overflow: hidden;
+}
+
+.no-padding{
+    padding:0;
+    margin:0;
+}
+
+.no-bullets{
+    list-style:none;
+}
+
+
+@media (min-width: 800px) {
+    
+    .mainPost{
+        float : left;
+        width : 75%;
+    }
+
+    .metaBox{
+        float : right;
+        width : 25%;
     }
 }
+
 
 .border-top {
     border-top: 1px solid var(--font-color);
@@ -186,6 +217,9 @@ html {
     min-height: 100%;
 }
 
+.border{
+    border-radius:0.2%;
+}
 
 .footer {
     position: absolute;
@@ -196,6 +230,9 @@ html {
 }
 
 body {
+    width:100%;
+    height:100%;
+    margin:0;
     font-family: 'Consolas','Inconsolata', 'Segoe UI', monospace;
     background-color: var(--bg-color);
     color: var(--font-color);
@@ -206,13 +243,13 @@ body {
 
 h1 {
     color: var(--heading-color);
-    font-size: 2rem;
+    font-size: 1.5rem;
     margin-bottom: 1vh;
 }
 
 p {
-    font-size: 1.1rem;
-    line-height: 1.6rem;
+    font-size : 1.2rem;
+    line-height: 1.75rem;
 }
 
 a {
@@ -346,4 +383,8 @@ blockquote{
 }
 .card-body{
     overflow-x : scroll;
+}
+
+.lead {
+    padding: .5rem 1rem;
 }
