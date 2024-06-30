@@ -39,9 +39,9 @@ namespace HighOctane.Blog
                     var adminUser = new IdentityUser()
                     {
                         UserName = "admin",
-                        Email = "admin@highoctane.io"
+                        Email = "admin@test.com"
                     };
-                    userManager.CreateAsync(adminUser, "Highoctanepassword1@").GetAwaiter().GetResult();
+                    userManager.CreateAsync(adminUser, "test").GetAwaiter().GetResult();
                     userManager.AddToRoleAsync(adminUser, adminRole.Name).GetAwaiter().GetResult();
                 }
 
